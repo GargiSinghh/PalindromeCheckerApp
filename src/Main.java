@@ -1,52 +1,52 @@
-/**
- * =========================================================
- * MAIN CLASS – UseCase10PalindromeCheckerApp
- * =========================================================
- *
- * Use Case 10: Case-Insensitive & Space-Ignored Palindrome
- *
- * Description:
- * This class validates a palindrome while ignoring
- * spaces and letter case differences.
- *
- * Concepts Used:
- * - String preprocessing
- * - Regular expressions
- * - Case normalization
- *
- * @author Developer
- * @version 10.0
- */
+import java.util.Scanner;
 
-public class Main {
+class PalindromeChecker {
 
-    public static void main(String[] args) {
+    private String input;
 
-        // Input with spaces and mixed case
-        String input = "Madam In Eden Im Adam";
+    public PalindromeChecker(String input) {
+        this.input = input;
+    }
 
-        // Step 1: Normalize string
-        // Remove spaces and convert to lowercase
+    public boolean checkPalindrome() {
+        if (input == null || input.isEmpty()) {
+            return true;
+        }
+
         String normalized = input.replaceAll("\\s+", "").toLowerCase();
-
-        boolean isPalindrome = true;
 
         int start = 0;
         int end = normalized.length() - 1;
 
-        // Step 2: Apply palindrome logic
         while (start < end) {
             if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
+                return false;
             }
             start++;
             end--;
         }
 
-        // Display result
-        System.out.println("Original Input : " + input);
-        System.out.println("Normalized Input : " + normalized);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        return true;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        PalindromeChecker checker = new PalindromeChecker(input);
+
+        if (checker.checkPalindrome()) {
+            System.out.println("The given string is a Palindrome.");
+        } else {
+            System.out.println("The given string is NOT a Palindrome.");
+        }
+
+        scanner.close();
     }
 }
