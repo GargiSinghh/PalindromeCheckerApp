@@ -1,11 +1,17 @@
-
-
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version : 1.0");
-        System.out.println("System initialized successfully.");
+        // Application Details
+        String appName = "Palindrome Checker Management System";
+        String version = "Version 1.0";
+
+        // Welcome Message
+        System.out.println("===================================");
+        System.out.println("        " + appName);
+        System.out.println("        " + version);
+        System.out.println("===================================");
+        System.out.println("Welcome! This application checks whether a string is a palindrome.");
+        System.out.println("Application started successfully.");
     }
 }
